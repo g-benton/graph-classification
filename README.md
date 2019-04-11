@@ -1,1 +1,1 @@
-# graph-classification
+# graph-clustering
