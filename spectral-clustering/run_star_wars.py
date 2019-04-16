@@ -7,12 +7,17 @@ sys.path.append("/Users/greg/Google Drive/Spring 19/CS6241/graph-clustering/data
 from read_star_wars import read_star_wars
 
 def main():
+    # np.random.seed(416)
+    np.random.seed(8818)
     adj_mat, nodes = read_star_wars()
-    n_clust = 30
+    n_clust = 7
     adj_mat.shape
-    out = cluster(adj_mat, n_clust, normalized=True)
-    groups = out[1]
-    groups
+
+    # run with homemade k means ##
+    node_list, clusters = cluster(adj_mat, n_clust, normalized=True)
+    groups = np.array([n.centroid for n in node_list])
+    # print([n.pos for n in node_list])
+    # groups
     for clust in range(n_clust):
         inds = np.where(groups == clust)
         print("GROUP:")
